@@ -171,11 +171,11 @@ class Config (object):
     for num,(fn,ie) in enumerate(zip(self._files, self._files_ignore_errors)):
       cp = self._newcp()
       if fn is None:
-        cp.read(StringIO(ie)) #HACK
+        cp.read_file(StringIO(ie)) #HACK
       elif ie:
         cp.read(fn)
       else:
-        cp.read(open(fn))
+        cp.read_file(open(fn))
       assert not cp.defaults(), "This section not allowed"
       defaults.append(cp.defaults().copy())
       defaults_with_files.append({k:(num,v) for k,v in cp.defaults().items()})
@@ -313,7 +313,7 @@ class Config (object):
       if ignore_errors:
         cp.read(w)
       else:
-        cp.read(open(w))
+        cp.read_file(open(w))
       for s in cp.sections():
         st = s.split(None, 1)
         if len(st) != 2: continue
