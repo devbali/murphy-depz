@@ -20,7 +20,7 @@
 
 
 
-from configparser import SafeConfigParser as ConfigParser
+from configparser import RawConfigParser as ConfigParser
 from configparser import ExtendedInterpolation
 from io import StringIO
 
